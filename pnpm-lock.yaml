@@ -4,7 +4,7 @@ specifiers:
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@vitejs/plugin-react': ^2.0.1
-  flume: github:sanisoclem/flume
+  flume: github:sanisoclem/flume#f082ce1c8ee6cb8e4e6211e607062e7b2895d2b0
   prop-types: ^15.5.4
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -17,7 +17,7 @@ devDependencies:
   '@types/react': 18.0.17
   '@types/react-dom': 18.0.6
   '@vitejs/plugin-react': 2.0.1_vite@3.0.9
-  flume: github.com/sanisoclem/flume/8986ce7443772f73e208399061037c9842d7cbe8_v2m5e27vhdewzwhryxwfaorcca
+  flume: github.com/sanisoclem/flume/f082ce1c8ee6cb8e4e6211e607062e7b2895d2b0_v2m5e27vhdewzwhryxwfaorcca
   prop-types: 15.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1071,9 +1071,9 @@ packages:
       loose-envify: 1.4.0
     dev: true
 
-  github.com/sanisoclem/flume/8986ce7443772f73e208399061037c9842d7cbe8_v2m5e27vhdewzwhryxwfaorcca:
-    resolution: {tarball: https://codeload.github.com/sanisoclem/flume/tar.gz/8986ce7443772f73e208399061037c9842d7cbe8}
-    id: github.com/sanisoclem/flume/8986ce7443772f73e208399061037c9842d7cbe8
+  github.com/sanisoclem/flume/f082ce1c8ee6cb8e4e6211e607062e7b2895d2b0_v2m5e27vhdewzwhryxwfaorcca:
+    resolution: {tarball: https://codeload.github.com/sanisoclem/flume/tar.gz/f082ce1c8ee6cb8e4e6211e607062e7b2895d2b0}
+    id: github.com/sanisoclem/flume/f082ce1c8ee6cb8e4e6211e607062e7b2895d2b0
     name: flume
     version: 0.8.0
     engines: {node: '>=8', npm: '>=5'}
