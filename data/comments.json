@@ -1,0 +1,266 @@
+[
+  {
+    "id": "empty",
+    "name": "empty",
+    "overview": {},
+    "inputFiles": {},
+    "invoiceMaps": {},
+    "filters": {}
+  },
+  {
+    "id": "advanced1",
+    "name": "advanced1",
+    "overview": {
+      "GJWrScdpxk": {
+        "id": "GJWrScdpxk",
+        "text": "Multiple invoices inputs means there are multiple files that get imported as invoices\n\nYou can add as many invoices/accounts/metadata files as required",
+        "x": 1463.808349609375,
+        "y": -316.2833251953125,
+        "width": 308,
+        "height": 144,
+        "color": "blue"
+      },
+      "QxlG4TZKYX": {
+        "id": "QxlG4TZKYX",
+        "text": "Even if the schema is the same, the invoice mapping is required to be defined twice because you cannot connect two outputs to the same input.\n\nThis is a limitation of this demo. Reusing mapping or filters should be possible with a some more work",
+        "x": 1281.6083374023438,
+        "y": -839.5,
+        "width": 435,
+        "height": 118,
+        "color": "blue"
+      },
+      "RUPhtNWPlA": {
+        "id": "RUPhtNWPlA",
+        "text": "I haven't created the map account and map metadata screens, they function exactly like map invoice, just with different destination fields",
+        "x": 806.625,
+        "y": -427.5,
+        "width": 198,
+        "height": 107,
+        "color": "blue"
+      }
+    },
+    "inputFiles": {},
+    "invoiceMaps": {
+      "aDhfYuk59c": {
+        "f6wwwIM3c4": {
+          "id": "f6wwwIM3c4",
+          "text": "Maybe an easier version of this function is to have a predefined set of date formats to choose from",
+          "x": -285.0623582834998,
+          "y": -414.51886295568124,
+          "width": 257.0951915922619,
+          "height": 87.09524972098211,
+          "color": "blue"
+        },
+        "VUnpsSuDl0": {
+          "id": "VUnpsSuDl0",
+          "text": "Lookups the creditor Id from some referential data (not built)",
+          "x": -167.01478573885697,
+          "y": -747.5823627696693,
+          "width": 231.3809058779762,
+          "height": 59.47620210193452,
+          "color": "blue"
+        },
+        "hlFwpBwxlp": {
+          "id": "hlFwpBwxlp",
+          "text": "string interpolation",
+          "x": 207.27092854685736,
+          "y": -452.344267531574,
+          "width": 200,
+          "height": 30,
+          "color": "blue"
+        },
+        "kQ9itw7oUw": {
+          "id": "kQ9itw7oUw",
+          "text": "checks if the ciredtor is in the list of NZ ids, if yes, prepends NZ/ to the id",
+          "x": 713.937595213524,
+          "y": -511.3918865791931,
+          "width": 266.61900111607156,
+          "height": 87.09524972098222,
+          "color": "blue"
+        },
+        "eOFhi3XsFs": {
+          "id": "eOFhi3XsFs",
+          "text": "The capabilities in terms of organization and readability is not very good. \n\nThere should be ways to:\n - re-route paths\n - drag multiple boxes together\n - group boxes \n\nThere are well established apps (Unreal engine, Unity, blender etc) that use node based editing that have very complex graphs and we can borrow ideas from them (some already mentioned above).",
+          "x": -478.6773691353095,
+          "y": -81.96730804427975,
+          "width": 307.79999999999995,
+          "height": 201.79999999999995,
+          "color": "red"
+        }
+      },
+      "kgWNN5Pxck": {
+        "7hfDLACbAw": {
+          "id": "7hfDLACbAw",
+          "text": "See Map Invoice (Encrypted file) for an example of a relatively complex transform",
+          "x": -110.375,
+          "y": -115.5,
+          "width": 212,
+          "height": 93,
+          "color": "blue"
+        }
+      }
+    },
+    "filters": {
+      "Dn5Gtw9YTc": {
+        "S3i-qhRvrW": {
+          "id": "S3i-qhRvrW",
+          "text": "This hard codes the values to check against.\n\nIn a more thought out solution, we can create re-usable referential lists to be use for comparisons or lookups. They can be defined in the flow but the data is entered on a separate screen (similar to how input files)",
+          "x": -723.375,
+          "y": 182.5,
+          "width": 393,
+          "height": 112,
+          "color": "blue"
+        },
+        "Hl08jAFcyE": {
+          "id": "Hl08jAFcyE",
+          "text": "I didn't have the time to add other arithmetic functions, but you can express it as an excel function, you can probably express it here too.",
+          "x": -717.375,
+          "y": -617.5,
+          "width": 255,
+          "height": 71,
+          "color": "blue"
+        },
+        "DvK_G3Q-3P": {
+          "id": "DvK_G3Q-3P",
+          "text": "TODO: Add other logical operators",
+          "x": 67.625,
+          "y": -394.5,
+          "width": 205,
+          "height": 43,
+          "color": "blue"
+        },
+        "p0o3d1eR92": {
+          "id": "p0o3d1eR92",
+          "text": "The input file cannot be changed here. To update this, go to the integration overview.\n\nThe columns are computed based on an uploaded test file. \n\nYou can also create a UI to define the expected fields manually",
+          "x": -1357.375,
+          "y": -194.5,
+          "width": 194,
+          "height": 187,
+          "color": "blue"
+        },
+        "I6EXX-q0Ce": {
+          "id": "I6EXX-q0Ce",
+          "text": "If the value is Yes/True, the row is included",
+          "x": 380.625,
+          "y": -347.5,
+          "width": 223,
+          "height": 51,
+          "color": "blue"
+        }
+      },
+      "t-KXiQwD8f": {
+        "Q9JlU8iDie": {
+          "id": "Q9JlU8iDie",
+          "text": "Doesn't filter out anything",
+          "x": -143.375,
+          "y": -196.5,
+          "width": 200,
+          "height": 30,
+          "color": "blue"
+        }
+      }
+    }
+  },
+  {
+    "id": "simple",
+    "name": "simple",
+    "overview": {
+      "wIZcyO8H7s": {
+        "id": "wIZcyO8H7s",
+        "text": "This corresponds to a file in the `Input Files` section with the same name.\n\nThe file config (where the file comes from) should be defined in that page",
+        "x": -523.375,
+        "y": -516.5,
+        "width": 229,
+        "height": 123,
+        "color": "blue"
+      },
+      "r2280LrP0S": {
+        "id": "r2280LrP0S",
+        "text": "You can upload an example file to pre-populate the fields. Note that the parser will fail if the actual file (not example file) does not match the defined fields.",
+        "x": -228.375,
+        "y": -380.5,
+        "width": 288,
+        "height": 94,
+        "color": "blue"
+      },
+      "tUPU6BkBQa": {
+        "id": "tUPU6BkBQa",
+        "text": "This coresponds to an entry in the 'Transforms' section with the same name.\n\nThis box merely indicates that we will have a transformation from row data to invoices, but doesn't define how.\n\nClick on the 'Map Invoice' link on the left to see how.",
+        "x": 192.15688229039623,
+        "y": -335.06020733652315,
+        "width": 246.8939763849432,
+        "height": 166.90906871448865,
+        "color": "blue"
+      },
+      "AkKLdX2g_1": {
+        "id": "AkKLdX2g_1",
+        "text": "This defines what our integration can accept.\n\nYou don't have to connect everything, it just means we won't get data for the unconnected ports.\n\nYou cannot remove this node",
+        "x": 542.1568822903962,
+        "y": -209.60566188197768,
+        "width": 209.59095348011374,
+        "height": 167.8181596235795,
+        "color": "blue"
+      },
+      "OFk19JdCmo": {
+        "id": "OFk19JdCmo",
+        "text": " - Hold LMB and drag to pan around\n - right click to open context menu. Right click on the canvas to add a node, right click on a node to edit/delete that node.\n - read from left to right, ports on the left are inputs, ones on the right are outputs\n - colors indicate data types, you can only connect ports of the same color\n - to disconnect a connection, click and drag on the input and release on a blank part in the canvas or other input port\n\n ",
+        "x": -569.4638779189565,
+        "y": 123.0888184488041,
+        "width": 809.1593070652171,
+        "height": 122.65217656674577,
+        "color": "green"
+      }
+    },
+    "inputFiles": {},
+    "invoiceMaps": {
+      "Xz8OyBQEIZ": {
+        "HHUUnBd7LE": {
+          "id": "HHUUnBd7LE",
+          "text": "This node defines the fields to make an invoice.\n\nYou cannot add/remove this node",
+          "x": 180.625,
+          "y": -262.5,
+          "width": 210,
+          "height": 92,
+          "color": "blue"
+        },
+        "gUk-jf-N5B": {
+          "id": "gUk-jf-N5B",
+          "text": "This node corresponds to the input file defined in the integration overview.\n\nThe columns are determine by the example file uploaded there",
+          "x": -590.375,
+          "y": -269.5,
+          "width": 223,
+          "height": 121,
+          "color": "blue"
+        },
+        "GLojLC317H": {
+          "id": "GLojLC317H",
+          "text": "You'll need to convert values explicitly (you can only connect ports of the same color). \n\nFailure in conversion will result in an error.",
+          "x": -220.375,
+          "y": 257.5,
+          "width": 215,
+          "height": 110,
+          "color": "blue"
+        },
+        "PBaOiB_lqR": {
+          "id": "PBaOiB_lqR",
+          "text": "This graph defines how an input file maps to an invoice. \n\nThe graph can be interpreted at runtime or can be converted to an AST of a DSL or a general programming language.\n\nThe advantage of converting it into an AST and running that (instead of interpreting) is that we can use that as an escape hatch to write scripts to tackle complex scenarios, without requiring a re-deployment.\n\nThe downside of that is that executing any code dynamically is a security risk. One way to address this is to use a sandboxed runtime (e.g., V8 isolates). In addition to that, I think a pure (referentially transparent) DSL would be better than a general programming languange (embedded DSLs are much easier to write). This would ensure that no side effects (or only desirable side effects - e.g., get current date) can be executed. \n\nAnother consideration is performance and stability, interpreting at run time has some overhead and could fail. ",
+          "x": 221.625,
+          "y": 201.5,
+          "width": 567,
+          "height": 279,
+          "color": "green"
+        },
+        "M7pSRXi2Rp": {
+          "id": "M7pSRXi2Rp",
+          "text": "Another good feature would be to run using a test file.\n\nThat way, the user gets immediate feedback instead of waiting for the integration to run",
+          "x": 394.625,
+          "y": -133.5,
+          "width": 149,
+          "height": 158,
+          "color": "blue"
+        }
+      }
+    },
+    "filters": {}
+  }
+]

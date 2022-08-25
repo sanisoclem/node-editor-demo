@@ -1,0 +1,927 @@
+[
+  {
+    "id": "empty",
+    "name": "Blank Integration 💣",
+    "overview": { },
+    "inputFiles": { },
+    "invoiceMaps": { },
+    "filters": { }
+  },
+  {
+    "id": "simple",
+    "name": "Simple Integration 😺",
+    "overview": {
+      "dFx8RQB8Tm": {
+        "x": 546.99169921875,
+        "y": -30,
+        "type": "systemInput",
+        "width": 170,
+        "connections": {
+          "inputs": {
+            "invoiceStream": [
+              { "nodeId": "Xz8OyBQEIZ", "portName": "invoiceStream" }
+            ]
+          },
+          "outputs": {}
+        },
+        "inputData": {
+          "invoiceStream": {},
+          "invoiceStream0": {},
+          "accountStream": {},
+          "metadataStream": {}
+        },
+        "root": true,
+        "id": "dFx8RQB8Tm"
+      },
+      "mdM0tysLDO": {
+        "id": "mdM0tysLDO",
+        "x": -500.375,
+        "y": -367.5,
+        "type": "inputFile",
+        "width": 200,
+        "connections": {
+          "inputs": {},
+          "outputs": {
+            "byteStream": [{ "nodeId": "M2SAbvp_VG", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "name": { "string": "Invoice File" } }
+      },
+      "M2SAbvp_VG": {
+        "id": "M2SAbvp_VG",
+        "x": -227.375,
+        "y": -271.5,
+        "type": "readDelimited",
+        "width": 300,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "mdM0tysLDO", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "rows": [{ "nodeId": "Xz8OyBQEIZ", "portName": "objectStream" }]
+          }
+        },
+        "inputData": {
+          "byteStream": {},
+          "sampleFile": { "upload": ["Test6", "Test7", "Test8", "Test5"] }
+        }
+      },
+      "Xz8OyBQEIZ": {
+        "id": "Xz8OyBQEIZ",
+        "x": 213.625,
+        "y": -155.5,
+        "type": "mapInvoice",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [{ "nodeId": "M2SAbvp_VG", "portName": "rows" }]
+          },
+          "outputs": {
+            "invoiceStream": [
+              { "nodeId": "dFx8RQB8Tm", "portName": "invoiceStream" }
+            ]
+          }
+        },
+        "inputData": { "name": { "string": "Map Invoice" }, "objectStream": {} }
+      }
+    },
+    "inputFiles": { "mdM0tysLDO": {} },
+    "invoiceMaps": {
+      "Xz8OyBQEIZ": {
+        "IKQeDKaq6n": {
+          "x": 190,
+          "y": -150,
+          "type": "invoice",
+          "width": 170,
+          "connections": {
+            "inputs": {
+              "invoiceId": [{ "nodeId": "zEutwzhNGr", "portName": "Test6" }],
+              "name": [{ "nodeId": "zEutwzhNGr", "portName": "Test7" }],
+              "accountId": [{ "nodeId": "zEutwzhNGr", "portName": "Test6" }],
+              "dueDate": [{ "nodeId": "vv6CUl9Tmg", "portName": "output" }],
+              "amount": [{ "nodeId": "Bm6cur36q2", "portName": "output" }]
+            },
+            "outputs": {}
+          },
+          "inputData": {
+            "invoiceId": { "string": "" },
+            "accountId": { "string": "" },
+            "name": { "string": "" },
+            "creditorId": { "string": "creditor/1" },
+            "amount": {},
+            "dueDate": {}
+          },
+          "root": true,
+          "id": "IKQeDKaq6n"
+        },
+        "zEutwzhNGr": {
+          "x": -563.00830078125,
+          "y": -138,
+          "type": "input",
+          "width": 170,
+          "connections": {
+            "inputs": {},
+            "outputs": {
+              "Test6": [
+                { "nodeId": "IKQeDKaq6n", "portName": "invoiceId" },
+                { "nodeId": "IKQeDKaq6n", "portName": "accountId" }
+              ],
+              "Test7": [{ "nodeId": "IKQeDKaq6n", "portName": "name" }],
+              "Test8": [{ "nodeId": "Bm6cur36q2", "portName": "input" }],
+              "Test5": [{ "nodeId": "vv6CUl9Tmg", "portName": "input" }]
+            }
+          },
+          "inputData": {},
+          "root": true,
+          "id": "zEutwzhNGr"
+        },
+        "vv6CUl9Tmg": {
+          "id": "vv6CUl9Tmg",
+          "x": -216.375,
+          "y": 131.5,
+          "type": "parseInstant",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "zEutwzhNGr", "portName": "Test5" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "IKQeDKaq6n", "portName": "dueDate" }]
+            }
+          },
+          "inputData": { "input": { "string": "" } }
+        },
+        "Bm6cur36q2": {
+          "id": "Bm6cur36q2",
+          "x": -220.375,
+          "y": -35.5,
+          "type": "parseMoney",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "zEutwzhNGr", "portName": "Test8" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "IKQeDKaq6n", "portName": "amount" }]
+            }
+          },
+          "inputData": { "input": { "string": "" } }
+        }
+      }
+    },
+    "filters": {}
+  },
+  {
+    "id": "advanced1",
+    "name": "Complex Integration 😎",
+    "overview": {
+      "oNbROp1djS": {
+        "x": 1466.99169921875,
+        "y": -560,
+        "type": "systemInput",
+        "width": 170,
+        "connections": {
+          "inputs": {
+            "invoiceStream": [
+              { "nodeId": "aDhfYuk59c", "portName": "invoiceStream" }
+            ],
+            "invoiceStream0": [
+              { "nodeId": "kgWNN5Pxck", "portName": "invoiceStream" }
+            ],
+            "accountStream": [
+              { "nodeId": "nGWqBFF9OX", "portName": "accountStream" }
+            ],
+            "metadataStream": [
+              { "nodeId": "sKeVSVRtZC", "portName": "metadataStream" }
+            ]
+          },
+          "outputs": {}
+        },
+        "inputData": {
+          "invoiceStream": {},
+          "invoiceStream0": {},
+          "invoiceStream1": {},
+          "accountStream": {},
+          "accountStream0": {},
+          "metadataStream": {},
+          "metadataStream0": {}
+        },
+        "root": true,
+        "id": "oNbROp1djS"
+      },
+      "KhbPipYMmQ": {
+        "id": "KhbPipYMmQ",
+        "x": -678.25,
+        "y": -698.5,
+        "type": "inputFile",
+        "width": 200,
+        "connections": {
+          "inputs": {},
+          "outputs": {
+            "byteStream": [{ "nodeId": "D5_3GvJdlu", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "name": { "string": "Encrypted Invoice File" } }
+      },
+      "R4TNnVJVnz": {
+        "id": "R4TNnVJVnz",
+        "x": -678.25,
+        "y": -154.5,
+        "type": "inputFile",
+        "width": 200,
+        "connections": {
+          "inputs": {},
+          "outputs": {
+            "byteStream": [{ "nodeId": "kpSIDZdFEH", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "name": { "string": "Metadata File" } }
+      },
+      "Q6F7KEbIsj": {
+        "id": "Q6F7KEbIsj",
+        "x": -679.25,
+        "y": -332.5,
+        "type": "inputFile",
+        "width": 200,
+        "connections": {
+          "inputs": {},
+          "outputs": {
+            "byteStream": [{ "nodeId": "t6FL34VSqS", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "name": { "string": "Accounts File" } }
+      },
+      "vde4bSUJWL": {
+        "id": "vde4bSUJWL",
+        "x": -679.25,
+        "y": -519.5,
+        "type": "inputFile",
+        "width": 200,
+        "connections": {
+          "inputs": {},
+          "outputs": {
+            "byteStream": [{ "nodeId": "WxtMCg3zSk", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "name": { "string": "Invoice File" } }
+      },
+      "D5_3GvJdlu": {
+        "id": "D5_3GvJdlu",
+        "x": -407.25,
+        "y": -846.5,
+        "type": "decrypt",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "KhbPipYMmQ", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "byteStream": [{ "nodeId": "wWvyx8DIQv", "portName": "byteStream" }]
+          }
+        },
+        "inputData": { "byteStream": {} }
+      },
+      "wWvyx8DIQv": {
+        "id": "wWvyx8DIQv",
+        "x": -138.25,
+        "y": -811.5,
+        "type": "readDelimited",
+        "width": 300,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "D5_3GvJdlu", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "rows": [{ "nodeId": "Dn5Gtw9YTc", "portName": "objectStream" }]
+          }
+        },
+        "inputData": {
+          "byteStream": {},
+          "sampleFile": { "upload": ["Test6", "Test7", "Test8", "Test5"] }
+        }
+      },
+      "WxtMCg3zSk": {
+        "id": "WxtMCg3zSk",
+        "x": -139.25,
+        "y": -523.5,
+        "type": "readDelimited",
+        "width": 300,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "vde4bSUJWL", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "rows": [{ "nodeId": "kgWNN5Pxck", "portName": "objectStream" }]
+          }
+        },
+        "inputData": {
+          "byteStream": {},
+          "sampleFile": { "upload": ["Test6", "Test7", "Test8", "Test5"] }
+        }
+      },
+      "t6FL34VSqS": {
+        "id": "t6FL34VSqS",
+        "x": -137.25,
+        "y": -235.5,
+        "type": "readDelimited",
+        "width": 300,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "Q6F7KEbIsj", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "rows": [{ "nodeId": "nGWqBFF9OX", "portName": "objectStream" }]
+          }
+        },
+        "inputData": {
+          "byteStream": {},
+          "sampleFile": { "upload": ["Test6", "Test7", "Test8", "Test5"] }
+        }
+      },
+      "kpSIDZdFEH": {
+        "id": "kpSIDZdFEH",
+        "x": -137.25,
+        "y": 58.5,
+        "type": "readDelimited",
+        "width": 300,
+        "connections": {
+          "inputs": {
+            "byteStream": [{ "nodeId": "R4TNnVJVnz", "portName": "byteStream" }]
+          },
+          "outputs": {
+            "rows": [{ "nodeId": "t-KXiQwD8f", "portName": "objectStream" }]
+          }
+        },
+        "inputData": {
+          "byteStream": {},
+          "sampleFile": { "upload": ["Test6", "Test7", "Test8", "Test5"] }
+        }
+      },
+      "aDhfYuk59c": {
+        "id": "aDhfYuk59c",
+        "x": 1030.74169921875,
+        "y": -845.5,
+        "type": "mapInvoice",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [
+              { "nodeId": "Dn5Gtw9YTc", "portName": "objectStream" }
+            ]
+          },
+          "outputs": {
+            "invoiceStream": [
+              { "nodeId": "oNbROp1djS", "portName": "invoiceStream" }
+            ]
+          }
+        },
+        "inputData": {
+          "name": { "string": "Map Invoice (Encrypted File)" },
+          "objectStream": {}
+        }
+      },
+      "kgWNN5Pxck": {
+        "id": "kgWNN5Pxck",
+        "x": 1029.74169921875,
+        "y": -642.5,
+        "type": "mapInvoice",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [{ "nodeId": "WxtMCg3zSk", "portName": "rows" }]
+          },
+          "outputs": {
+            "invoiceStream": [
+              { "nodeId": "oNbROp1djS", "portName": "invoiceStream0" }
+            ]
+          }
+        },
+        "inputData": { "name": { "string": "Map Invoice" }, "objectStream": {} }
+      },
+      "nGWqBFF9OX": {
+        "id": "nGWqBFF9OX",
+        "x": 1028.74169921875,
+        "y": -439.5,
+        "type": "mapAccount",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [{ "nodeId": "t6FL34VSqS", "portName": "rows" }]
+          },
+          "outputs": {
+            "accountStream": [
+              { "nodeId": "oNbROp1djS", "portName": "accountStream" }
+            ]
+          }
+        },
+        "inputData": { "name": { "string": "Map Account" }, "objectStream": {} }
+      },
+      "sKeVSVRtZC": {
+        "id": "sKeVSVRtZC",
+        "x": 1030.74169921875,
+        "y": -236.5,
+        "type": "mapMetadata",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [
+              { "nodeId": "t-KXiQwD8f", "portName": "objectStream" }
+            ]
+          },
+          "outputs": {
+            "metadataStream": [
+              { "nodeId": "oNbROp1djS", "portName": "metadataStream" }
+            ]
+          }
+        },
+        "inputData": {
+          "name": { "string": "Map Metadata" },
+          "objectStream": {}
+        }
+      },
+      "Dn5Gtw9YTc": {
+        "id": "Dn5Gtw9YTc",
+        "x": 496.625,
+        "y": -866.5,
+        "type": "filter",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [{ "nodeId": "wWvyx8DIQv", "portName": "rows" }]
+          },
+          "outputs": {
+            "objectStream": [
+              { "nodeId": "aDhfYuk59c", "portName": "objectStream" }
+            ]
+          }
+        },
+        "inputData": {
+          "name": { "string": "Filter Invoices" },
+          "objectStream": {}
+        }
+      },
+      "t-KXiQwD8f": {
+        "id": "t-KXiQwD8f",
+        "x": 497.625,
+        "y": 1.5,
+        "type": "filter",
+        "width": 200,
+        "connections": {
+          "inputs": {
+            "objectStream": [{ "nodeId": "kpSIDZdFEH", "portName": "rows" }]
+          },
+          "outputs": {
+            "objectStream": [
+              { "nodeId": "sKeVSVRtZC", "portName": "objectStream" }
+            ]
+          }
+        },
+        "inputData": {
+          "name": { "string": "Filter metadata" },
+          "objectStream": {}
+        }
+      }
+    },
+    "inputFiles": {
+      "KhbPipYMmQ": {},
+      "R4TNnVJVnz": {},
+      "Q6F7KEbIsj": {},
+      "vde4bSUJWL": {}
+    },
+    "invoiceMaps": {
+      "aDhfYuk59c": {
+        "BTgrk00IjY": {
+          "x": 1145.099007043881,
+          "y": -112.00829321671795,
+          "type": "invoice",
+          "width": 170,
+          "connections": {
+            "inputs": {
+              "dueDate": [{ "nodeId": "Jwccx5Bv9-", "portName": "output" }],
+              "amount": [{ "nodeId": "PZVeG0iYCN", "portName": "output" }],
+              "invoiceId": [{ "nodeId": "FilwbFMuCS", "portName": "output" }],
+              "accountId": [{ "nodeId": "FilwbFMuCS", "portName": "output" }],
+              "name": [{ "nodeId": "O6AmHBtayz", "portName": "Test7" }],
+              "creditorId": [{ "nodeId": "0O34Y99vfM", "portName": "output" }]
+            },
+            "outputs": {}
+          },
+          "inputData": {
+            "invoiceId": { "string": "" },
+            "accountId": { "string": "" },
+            "name": { "string": "" },
+            "creditorId": { "string": "creditor/1" },
+            "amount": {},
+            "dueDate": {}
+          },
+          "root": true,
+          "id": "BTgrk00IjY"
+        },
+        "O6AmHBtayz": {
+          "x": -1007.00830078125,
+          "y": -157,
+          "type": "input",
+          "width": 170,
+          "connections": {
+            "inputs": {},
+            "outputs": {
+              "Test6": [{ "nodeId": "RhaLSKC2Gm", "portName": "invoice" }],
+              "Test7": [
+                { "nodeId": "BTgrk00IjY", "portName": "name" },
+                { "nodeId": "X0NkKtuCmo", "portName": "input" }
+              ],
+              "Test8": [{ "nodeId": "PZVeG0iYCN", "portName": "input" }],
+              "Test5": [{ "nodeId": "Jwccx5Bv9-", "portName": "input" }]
+            }
+          },
+          "inputData": {},
+          "root": true,
+          "id": "O6AmHBtayz"
+        },
+        "Jwccx5Bv9-": {
+          "id": "Jwccx5Bv9-",
+          "x": -303.3824382686189,
+          "y": 228.60280433102514,
+          "type": "parseInstant",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "O6AmHBtayz", "portName": "Test5" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "BTgrk00IjY", "portName": "dueDate" }]
+            }
+          },
+          "inputData": { "input": { "string": "" } }
+        },
+        "PZVeG0iYCN": {
+          "id": "PZVeG0iYCN",
+          "x": -300.8374277290595,
+          "y": 107.57937164322018,
+          "type": "parseMoney",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "O6AmHBtayz", "portName": "Test8" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "BTgrk00IjY", "portName": "amount" }]
+            }
+          },
+          "inputData": { "input": { "string": "" } }
+        },
+        "RhaLSKC2Gm": {
+          "id": "RhaLSKC2Gm",
+          "x": 139.63595365846447,
+          "y": -407.619390764461,
+          "type": "compose",
+          "width": 230,
+          "connections": {
+            "inputs": {
+              "batch": [{ "nodeId": "aYWxNNWGdz", "portName": "output" }],
+              "creditorId": [{ "nodeId": "0O34Y99vfM", "portName": "output" }],
+              "invoice": [{ "nodeId": "O6AmHBtayz", "portName": "Test6" }]
+            },
+            "outputs": {
+              "string": [
+                { "nodeId": "m6FqtU-8R2", "portName": "id" },
+                { "nodeId": "FilwbFMuCS", "portName": "no" }
+              ]
+            }
+          },
+          "inputData": {
+            "template": {
+              "string": "creditor/{creditorId}/invoice/{invoice}-{batch}"
+            },
+            "creditorId": { "string": "" },
+            "invoice": { "string": "" },
+            "batch": { "string": "" }
+          }
+        },
+        "G4tBaPCwyr": {
+          "id": "G4tBaPCwyr",
+          "x": -576.0616313685562,
+          "y": -330.2114044493894,
+          "type": "now",
+          "width": 200,
+          "connections": {
+            "inputs": {},
+            "outputs": {
+              "output": [
+                { "nodeId": "aYWxNNWGdz", "portName": "output" },
+                { "nodeId": "aYWxNNWGdz", "portName": "input" }
+              ]
+            }
+          },
+          "inputData": {}
+        },
+        "aYWxNNWGdz": {
+          "id": "aYWxNNWGdz",
+          "x": -275.6964667480205,
+          "y": -327.13209362349653,
+          "type": "formatDate",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "output": [{ "nodeId": "G4tBaPCwyr", "portName": "output" }],
+              "input": [{ "nodeId": "G4tBaPCwyr", "portName": "output" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "RhaLSKC2Gm", "portName": "batch" }]
+            }
+          },
+          "inputData": { "input": {}, "format": { "string": "yyyy-MM-dd" } }
+        },
+        "X0NkKtuCmo": {
+          "id": "X0NkKtuCmo",
+          "x": -351.07821579838077,
+          "y": -664.9633151506216,
+          "type": "lookup",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "O6AmHBtayz", "portName": "Test7" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "0O34Y99vfM", "portName": "input" }]
+            }
+          },
+          "inputData": {
+            "input": { "string": "" },
+            "referential": { "referentialDict": "asgasg" }
+          }
+        },
+        "0O34Y99vfM": {
+          "id": "0O34Y99vfM",
+          "x": -86.7449522195117,
+          "y": -632.5030025343642,
+          "type": "lookup",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "X0NkKtuCmo", "portName": "output" }]
+            },
+            "outputs": {
+              "output": [
+                { "nodeId": "RhaLSKC2Gm", "portName": "creditorId" },
+                { "nodeId": "Bef8TzZwV6", "portName": "input" },
+                { "nodeId": "BTgrk00IjY", "portName": "creditorId" }
+              ]
+            }
+          },
+          "inputData": {
+            "input": { "string": "" },
+            "referential": { "referentialDict": "asga" }
+          }
+        },
+        "Bef8TzZwV6": {
+          "id": "Bef8TzZwV6",
+          "x": 419.3185708459645,
+          "y": -635.9315652436276,
+          "type": "inList",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "0O34Y99vfM", "portName": "output" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "FilwbFMuCS", "portName": "input" }]
+            }
+          },
+          "inputData": {
+            "input": { "string": "" },
+            "referential": { "referentialList": "asfasf" }
+          }
+        },
+        "FilwbFMuCS": {
+          "id": "FilwbFMuCS",
+          "x": 810.0366498161768,
+          "y": -285.96439867836534,
+          "type": "if",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "Bef8TzZwV6", "portName": "output" }],
+              "yes": [{ "nodeId": "m6FqtU-8R2", "portName": "string" }],
+              "no": [{ "nodeId": "RhaLSKC2Gm", "portName": "string" }]
+            },
+            "outputs": {
+              "output": [
+                { "nodeId": "BTgrk00IjY", "portName": "invoiceId" },
+                { "nodeId": "BTgrk00IjY", "portName": "accountId" }
+              ]
+            }
+          },
+          "inputData": {
+            "input": { "boolean": false },
+            "yes": { "string": "" },
+            "no": { "string": "" }
+          }
+        },
+        "m6FqtU-8R2": {
+          "id": "m6FqtU-8R2",
+          "x": 437.5566893355478,
+          "y": -412.5506244884193,
+          "type": "compose",
+          "width": 230,
+          "connections": {
+            "inputs": {
+              "id": [{ "nodeId": "RhaLSKC2Gm", "portName": "string" }]
+            },
+            "outputs": {
+              "string": [{ "nodeId": "FilwbFMuCS", "portName": "yes" }]
+            }
+          },
+          "inputData": {
+            "template": { "string": "NZ-{id}" },
+            "id": { "string": "" }
+          }
+        }
+      },
+      "kgWNN5Pxck": {
+        "FX7E4PP8I0": {
+          "x": 248.99169921875,
+          "y": -164,
+          "type": "invoice",
+          "width": 170,
+          "connections": { "inputs": {}, "outputs": {} },
+          "inputData": {
+            "invoiceId": { "string": "" },
+            "accountId": { "string": "" },
+            "name": { "string": "" },
+            "creditorId": { "string": "" },
+            "amount": {},
+            "dueDate": {}
+          },
+          "root": true,
+          "id": "FX7E4PP8I0"
+        },
+        "erWjdo2sDB": {
+          "x": -390,
+          "y": -150,
+          "type": "input",
+          "width": 170,
+          "connections": { "inputs": {}, "outputs": {} },
+          "inputData": {},
+          "root": true,
+          "id": "erWjdo2sDB"
+        }
+      }
+    },
+    "filters": {
+      "Dn5Gtw9YTc": {
+        "OGyA4hTP_3": {
+          "x": 379.99169921875,
+          "y": -283,
+          "type": "shouldInclude",
+          "width": 170,
+          "connections": {
+            "inputs": {
+              "Include": [{ "nodeId": "R0o3etVs9O", "portName": "output" }]
+            },
+            "outputs": {}
+          },
+          "inputData": { "Include": { "boolean": false } },
+          "root": true,
+          "id": "OGyA4hTP_3"
+        },
+        "F_mNbCOLTR": {
+          "x": -1347.00830078125,
+          "y": -346,
+          "type": "input",
+          "width": 170,
+          "connections": {
+            "inputs": {},
+            "outputs": {
+              "Test6": [{ "nodeId": "t6VS-V2Udw", "portName": "input" }],
+              "Test7": [{ "nodeId": "dVqWxJ6XV4", "portName": "input" }],
+              "Test8": [],
+              "Test5": []
+            }
+          },
+          "inputData": {},
+          "root": true,
+          "id": "F_mNbCOLTR"
+        },
+        "R0o3etVs9O": {
+          "id": "R0o3etVs9O",
+          "x": 68.625,
+          "y": -337.5,
+          "type": "and",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "ZCAkCWfiAo", "portName": "output" }],
+              "input0": [{ "nodeId": "dVqWxJ6XV4", "portName": "matched" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "OGyA4hTP_3", "portName": "Include" }]
+            }
+          },
+          "inputData": {
+            "input": { "boolean": false },
+            "input0": { "boolean": false }
+          }
+        },
+        "dVqWxJ6XV4": {
+          "id": "dVqWxJ6XV4",
+          "x": -722.375,
+          "y": -312.5,
+          "type": "anyOf",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "F_mNbCOLTR", "portName": "Test7" }]
+            },
+            "outputs": {
+              "matched": [{ "nodeId": "R0o3etVs9O", "portName": "input0" }]
+            }
+          },
+          "inputData": {
+            "input": { "string": "" },
+            "anyMatch": { "string": "TEST1" },
+            "anyMatch0": { "string": "TEST2" },
+            "anyMatch1": { "string": "TEST3" },
+            "anyMatch2": { "string": "" }
+          }
+        },
+        "t6VS-V2Udw": {
+          "id": "t6VS-V2Udw",
+          "x": -1016.375,
+          "y": -567.5,
+          "type": "parseMoney",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "F_mNbCOLTR", "portName": "Test6" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "ZCAkCWfiAo", "portName": "input" }]
+            }
+          },
+          "inputData": { "input": { "string": "" } }
+        },
+        "ZCAkCWfiAo": {
+          "id": "ZCAkCWfiAo",
+          "x": -717.375,
+          "y": -534.5,
+          "type": "greaterThan",
+          "width": 200,
+          "connections": {
+            "inputs": {
+              "input": [{ "nodeId": "t6VS-V2Udw", "portName": "output" }]
+            },
+            "outputs": {
+              "output": [{ "nodeId": "R0o3etVs9O", "portName": "input" }]
+            }
+          },
+          "inputData": { "input": { "number": 0 }, "than": { "number": 4 } }
+        }
+      },
+      "t-KXiQwD8f": {
+        "eO-2Dn1ysu": {
+          "x": 232.99169921875,
+          "y": -109,
+          "type": "shouldInclude",
+          "width": 170,
+          "connections": {
+            "inputs": {
+              "Include": [{ "nodeId": "K1jxrvalaS", "portName": "output" }]
+            },
+            "outputs": {}
+          },
+          "inputData": { "Include": { "boolean": false } },
+          "root": true,
+          "id": "eO-2Dn1ysu"
+        },
+        "kSUlKD2YYB": {
+          "x": -459.00830078125,
+          "y": -148,
+          "type": "input",
+          "width": 170,
+          "connections": {
+            "inputs": {},
+            "outputs": { "Test6": [], "Test7": [], "Test8": [], "Test5": [] }
+          },
+          "inputData": {},
+          "root": true,
+          "id": "kSUlKD2YYB"
+        },
+        "K1jxrvalaS": {
+          "id": "K1jxrvalaS",
+          "x": -143.375,
+          "y": -143.5,
+          "type": "constantBool",
+          "width": 200,
+          "connections": {
+            "inputs": {},
+            "outputs": {
+              "output": [{ "nodeId": "eO-2Dn1ysu", "portName": "Include" }]
+            }
+          },
+          "inputData": { "input": { "boolean": true } }
+        }
+      }
+    }
+  }
+]
