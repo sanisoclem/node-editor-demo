@@ -190,6 +190,7 @@ export default function Editor() {
     <>
       {/* <div>{JSON.stringify(nodes)}</div> */}
       <div
+        id="main-div"
         className={tw`text-white w-screen flex h-screen flex-row items-stretch justify-center workspace`}
       >
         <div className={tw`flex-grow-0 flex-shrink-0 bg-gray-900 p-4 w-3/12`}>

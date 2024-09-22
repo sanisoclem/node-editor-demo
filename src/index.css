@@ -2,7 +2,10 @@
 
 html {
 	font-family: 'VT323', monospace !important;
-  font-size: 25px;
+}
+
+#main-div {
+  font-size:25px;
 }
 
 h1 {
